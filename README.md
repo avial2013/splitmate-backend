@@ -1,95 +1,83 @@
-# SplitMate – Smart Shared Living App
+# Splitmate Backend
 
-## 📌 Overview
+This is the backend service for **Splitmate**, a simple app to help friends split expenses easily.
 
-**SplitMate** is a full-stack web and mobile app built to simplify life for roommates. It helps manage shared expenses, chores, and household communication—streamlined in one smart platform.
+## 🧰 Stack
 
-Whether it's who takes out the trash or who owes who for groceries, SplitMate keeps things clear, fair, and automatic.
+- Node.js
+- Express
+- TypeScript
 
-## 🚀 Live Demo
+## ⚙️ Setup
 
-* 🌐 Web: \[link here]
-* 📱 Mobile: \[Expo link here]
-* 🔧 API Docs: \[Swagger link here]
-* 📂 GitHub: \[[backend repo](https://github.com/avial2013/splitmate-backend.git)] | \[[frontend repo](https://github.com/avial2013/splitmate-frontend.git)]
-
-## 🌟 Features
-
-* 🔑 User Authentication (JWT + Refresh Tokens)
-* 🏠 Household Management (create, join, invite)
-* 📋 Chore Tracker (drag & drop Kanban-style)
-* 💸 Expense Splitter (track who paid, who owes)
-* 🧠 Smart Reminders (push + email)
-* 📡 Real-Time Updates (WebSockets)
-* 📊 Dashboard Overview (charts, lists, activity log)
-* 🌍 Multilingual Support (Hebrew, English)
-
-## 🛠️ Tech Stack
-
-### Backend
-
-* Node.js, Express.js, TypeScript
-* MongoDB + Mongoose
-* JWT Auth, Bcrypt
-* WebSockets (Socket.IO)
-* AWS / Railway (deployment)
-* Swagger for API documentation
-
-### Frontend (Web)
-
-* React + TypeScript
-* Zustand (state management)
-* Styled Components or TailwindCSS
-* React Hook Form + Zod
-
-### Mobile
-
-* React Native + Expo
-* Shared logic with Web (hooks/services)
-* Push Notifications (Expo)
-
-### DevOps
-
-* GitHub Actions (CI)
-* Vercel (Web), Expo (Mobile)
-* Logging with Winston
-* MongoDB Atlas
-
-## 🔮 Test Credentials (for demo)
-
-Email: `demo@splitmate.com`
-Password: `Split1234`
-
-## 🗂️ Project Structure
+### 1. Clone the Repo
 
 ```bash
-.
-├── backend
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   ├── middleware
-│   └── utils
-├── frontend
-│   ├── components
-│   ├── pages
-│   ├── hooks
-│   ├── services
-│   └── state
-└── mobile
-    └── similar structure to frontend
+git clone https://github.com/YOUR_USERNAME/splitmate-backend
+cd splitmate-backend
 ```
 
-## 👨‍💻 Developer
+### 2. Install Dependencies
+```bash
+npm install express
+npm install --save-dev typescript ts-node-dev @types/express
+```
 
-**Avial Israel**
-Full Stack Developer • Node.js • React • AWS
-🇮🇱 Israel
-📧 [avicop@gmail.com](mailto:avicop@gmail.com)
-🔗 [LinkedIn](https://www.linkedin.com/in/avial-israel/) | [Portfolio](https://yourportfolio.com)
+### 3. Initialize TypeScript
+```bash
+npx tsc --init
+```
 
----
+### 4. Folder Structure
+```pgsql
+splitmate-backend/
+├── src/
+│   └── index.ts         # Express entry point
+├── .gitignore
+├── LICENSE
+├── package.json
+├── tsconfig.json
+└── README.md
+```
 
-## 📆 Architecture (To Be Added)
+### 5. Example `src/index.ts`
+```ts
+import express from 'express';
 
-*(Insert architecture diagram using Excalidraw or Lucidchart here)*
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+
+app.get('/', (_req, res) => {
+  res.send('Welcome to Splitmate API');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+```
+
+### 🔁 Dev Script
+Run the server in development mode:
+
+```bash
+npm run dev
+```
+Make sure your `package.json` includes:
+```json
+Copy code
+"scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+}
+```
+
+### 📄 .gitignore Example
+```bash
+node_modules/
+dist/
+.env
+```
+
+### 📝 License
+MIT — see `LICENSE` file.
